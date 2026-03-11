@@ -33,7 +33,7 @@ export default function Home() {
 
         {/* Predictions */}
         <section>
-          <h2 className="text-2xl font-bold mb-4">🏏 Today's Match Predictions</h2>
+          <h2 className="text-2xl font-bold mb-4">🏏 Today Match Predictions</h2>
 
           <div className="border p-6 rounded-lg shadow-md bg-gray-50">
             <h3 className="text-xl font-semibold">RCB vs MI</h3>
