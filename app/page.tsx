@@ -1,6 +1,10 @@
 import MatchCard from "@/components/MatchCard";
+import { getMatches } from "@/lib/cricketApi";
 
-export default function Home() {
+export default async function Home() {
+
+  const matches = await getMatches();
+
   return (
     <main className="max-w-7xl mx-auto p-10 space-y-10">
 
@@ -17,32 +21,22 @@ export default function Home() {
 
         <div className="grid md:grid-cols-3 gap-6">
 
-          <MatchCard
-            team1="RCB"
-            team2="MI"
-            time="Live Now"
-            probability1={62}
-            probability2={38}
-          />
+          {matches?.slice(0,3).map((match:any) => (
 
-          <MatchCard
-            team1="CSK"
-            team2="KKR"
-            time="Starting Soon"
-            probability1={55}
-            probability2={45}
-          />
+            <MatchCard
+              key={match.id}
+              team1={match.teams[0]}
+              team2={match.teams[1]}
+              time={match.status}
+              probability1={55}
+              probability2={45}
+            />
 
-          <MatchCard
-            team1="SRH"
-            team2="DC"
-            time="Upcoming"
-            probability1={51}
-            probability2={49}
-          />
+          ))}
 
         </div>
       </section>
+
 
       {/* Predictions */}
 
@@ -53,21 +47,18 @@ export default function Home() {
 
         <div className="grid md:grid-cols-2 gap-6">
 
-          <MatchCard
-            team1="RCB"
-            team2="MI"
-            time="Today 7:30 PM"
-            probability1={62}
-            probability2={38}
-          />
+          {matches?.slice(3,5).map((match:any) => (
 
-          <MatchCard
-            team1="CSK"
-            team2="KKR"
-            time="Today 3:30 PM"
-            probability1={55}
-            probability2={45}
-          />
+            <MatchCard
+              key={match.id}
+              team1={match.teams[0]}
+              team2={match.teams[1]}
+              time={match.dateTimeGMT}
+              probability1={60}
+              probability2={40}
+            />
+
+          ))}
 
         </div>
 
