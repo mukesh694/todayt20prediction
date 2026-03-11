@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "../components/Navbar";
+import Footer from "@/components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,26 +17,27 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "todayt20prediction",
   description: "IPL & T20 match predictions",
-  icons:{
-    icon:"/cricket.png",
+  icons: {
+    icon: "/cricket.png",
   },
 };
 
 export default function RootLayout({
   children,
-}:  {
+}: {
   children: React.ReactNode;
 }) {
   return (
     <html lang="en">
-      <body>
-
+      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        
         <Navbar />
 
         {children}
 
+        <Footer />
+
       </body>
     </html>
   );
-
 }
